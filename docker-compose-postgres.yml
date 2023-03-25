@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  postgres-main:
+    image: postgres
+    container_name: postgres-main
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+    volumes:
+      - volume-postgres-main:/var/lib/postgresql
+    networks:
+      - net-dev
+
+volumes:
+  volume-postgres-main:
+
+networks:
+  net-dev:
+    driver: bridge

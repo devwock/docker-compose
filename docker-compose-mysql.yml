@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  mysql-main:
+    image: mysql:latest
+    container_name: mysql-main
+    ports:
+      - 3306:3306
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --server-id=10
+      --log-bin=mysql-bin
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - volume-mysql-main:/var/lib/mysql
+      - volume-mysql-main:/var/lib/mysql-files
+    networks:
+      - net-dev
+
+volumes:
+  volume-mysql-main:
+
+networks:
+  net-dev:
+    driver: bridge
