@@ -8,7 +8,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: root
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
     volumes:
       - volume-postgres-main:/var/lib/postgresql
     networks:
